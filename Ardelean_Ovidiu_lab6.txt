@@ -1,0 +1,177 @@
+1)
+#include <iostream>
+using namespace std;
+#include <conio.h>
+void main()
+{
+	float x, s;
+	int a, b, c, d;
+	cout << "dati coef x^3";
+	cin >> a;
+	cout << "dati coef x^2";
+	cin >> b;
+	cout << "dati coef x";
+	cin >> c;
+	cout << "dati termen liber";
+	cin >> d;
+	cout << "dati valoare lui x=";
+	cin >> x;
+	s = x*x*x*a + x*x*b + x*c + d;
+	cout << s;
+	_getch();
+}
+
+2)
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+using namespace std;
+#include <conio.h>
+#include <math.h>
+void main()
+{
+	int a, b, c, k;
+	double aria, p;
+	cin >> a >> b >> c;
+	k = 0;
+	if (a + b == c || a + c == b || b + c == a)
+	{
+		cout << "\nnu poate fii triunghi";
+		k = 1;
+	}
+	else
+	
+	if (a + b < c) {
+		cout << "imposibil"; k = 1;
+	}
+	if (a + c < b) {
+		cout << "imposibil"; k = 1;
+	}
+	if (b + c < a) {
+		cout << "imposibil"; k = 1;
+	}
+	if (k = 0)
+	{
+		p = (a + b + c) / 2;
+		aria = sqrt(p*(p - a)*(p - b)*(p - c));
+		cout << "\n" << aria;
+	}
+		_getch();
+	}
+
+
+4)
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+using namespace std;
+#include <conio.h>
+#include <math.h>
+#include <stdlib.h>
+void bin(int);
+
+void main()
+{
+	int x;
+	scanf("%d", &x);
+	printf("valoare x in zecimal=%d", x);
+	printf("\nvaloare in binar a lui x=");
+	bin(x);
+	printf("\nvaloare in octal a lui x=%o", x);
+	printf("\nvaloarea in hexa a lui x=%x", x);
+	_getch();
+}
+void bin(int x)
+{
+	int a[64], l,i=1;
+	while (x>0)
+	{
+		i++;
+		a[i] = x % 2;
+		x = x / 2;
+	}
+	l = i;
+	for (i = l; i>=2; i--)
+	{
+		printf("%d",a[i]);
+	}
+}
+
+
+5)
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+using namespace std;
+#include <conio.h>
+void main()
+{
+	int n, i;
+	i = 0;
+	cin >> n;
+	while (n > 0)
+	{
+		if (n % 2 == 0)  i++;
+		n = n / 2;
+	}
+	cout << i;
+	_getch();
+}
+
+
+7)
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <conio.h>
+#include <math.h>
+using namespace std;
+void main()
+{
+	float a, b;
+	float adun, scad, inm, imp;
+	cin >> a >> b;
+	adun = a + b;
+	scad = a - b;
+	inm = a*b;
+	imp = a / b;
+	cout <<"adunare="<< adun<<"\n"<<"scadere=" << scad <<"\n"<<"inmultire="<< inm<<"\n"<<"impartire=" << imp;
+	cout << "\n\nvalorile dupa rotunjire sunt:\n\n";
+	cout << "adunare=" << (int)adun << "\n" << "scadere=" << (int)scad << "\n" << "inmultire=" <<(int) inm<< "\n" << "impartire=" << (int)imp;
+	if (a < b) cout << "\nvaloare mai mica este=a=" << a;
+	if (b < a) cout << "\nvaloare mai mica este=b=" << b;
+	if (a == b) cout << "\nvalorile sunt egale";
+	_getch();
+}
+
+
+8)
+#include <iostream>
+#include <conio.h>
+#include <math.h>
+using namespace std;
+void main()
+{
+	char a, b, c;
+	cin >> a >> b >> c;
+	a = a - 32;
+	b = b - 32;
+	c = c - 32;
+	cout << a << b << c;
+	_getch();
+}
+
+
+9)
+#include <iostream>
+#include <conio.h>
+#include <math.h>
+using namespace std;
+#define PI 3.14
+void main()
+{
+	int a, b;
+	cin >> a >> b;
+	if (a == b)
+		cout << "am calculat aria cerc=" << a*a*PI;
+	else
+		cout << "am calculat aria dreptunghi=" << a*b;
+	_getch();
+}
+

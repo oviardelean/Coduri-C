@@ -1,0 +1,37 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <conio.h>
+#include <stdlib.h>
+#include <string.h>
+void main (int argc, char *argv[])
+{
+int i,k,j;
+float suma=0,n,produs=1;
+char s[10];
+if (argc == 1) {
+printf("\n\n\tNu ati introdus numerele de adunat !");
+_getch();
+exit(1);
+}//end if
+else
+{
+for(i=1; i<argc; i++)
+{
+	strcpy(s, argv[i]);
+	k=0;
+	j=1;
+	while ((k==0)&&(j<=strlen(argv[i])))
+	{
+		if (s[j]=='.') k=1;
+		if (k==1) n=atof(argv[i]);
+		j++;
+	}
+		if (k==0) n = atoi(argv[i]);
+		suma += n;
+		produs*=n;
+}//end for
+printf("\nSuma argumentelor din linia de comanda este : %f\n", suma);
+printf("\nProdusul argumentelor din linia de comanda este : %f\n", produs);
+_getch();
+}//end else
+}//end main

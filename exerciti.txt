@@ -1,0 +1,38 @@
+1)
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <iostream>
+#include <conio.h>
+using namespace std;
+void citire(int n, float*p);
+void main()
+{
+	int n, i;
+	float *p;
+	float*p1 = (float*)malloc(sizeof(float));
+	char s[20];
+	FILE *doc;
+	cin >> n;
+	p = (float*)malloc(n * sizeof(float));
+	citire(n, p);
+	cout << "numele fisierului:";
+	cin >> s;
+	doc = fopen(s, "wb");
+	fwrite(p, sizeof(float), n, doc);
+	fclose(doc);
+	doc = fopen(s, "rb");
+	i = 0;
+	while (i<n)
+	{
+		fseek(doc, i* sizeof(float), SEEK_SET);
+		fread(p1, sizeof(float), 1, doc);
+		cout << *p1 << " ";
+		i += 3;
+	} 
+	_getch();
+}
+void citire(int n,float *p)
+{
+	int i;
+	for (i = 0; i < n; i++) cin >> *(p + i);
+}

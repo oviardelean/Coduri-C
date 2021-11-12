@@ -1,0 +1,217 @@
+1)
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <stdio.h>
+#include <conio.h>
+#include <cstring>
+#include <fstream>
+#include <stdlib.h>
+using namespace std;
+void citire(int n,int*p);
+void main()
+{
+	FILE *doc;
+	int n,i,x;
+	int *p;
+	char c[20];
+	cin >> n;
+	p = (int*)malloc(n * sizeof(int));
+	citire(n, p);
+	cout << endl << "cum vreti sa se numeasca fisierul:";
+	cin >> c;
+	doc = fopen(c, "wb");
+	fwrite(p, sizeof(int), n, doc);
+	fclose(doc);
+	doc = fopen(c, "rb");
+	for (i = 0; i < n; i++)
+	{
+		fread(&x, sizeof(int), 1, doc);
+		if ((i % 3 == 0) || (i == 0)) cout << x << " ";
+	}
+	fclose(doc);
+	_getch();
+}
+void citire(int n,int *p)
+{
+	int i;
+	cout << endl << "dati elementele:";
+	for (i = 0; i < n; i++) cin >> p[i];
+}
+
+2)
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <stdio.h>
+#include <conio.h>
+#include <cstring>
+#include <fstream>
+#include <stdlib.h>
+using namespace std;
+struct student
+{
+	char nume[20];
+	char prenume[20];
+	char grupa[2];
+	float media;
+};
+student *p;
+void citire(int n, student*p);
+void main()
+{
+	int n,i;
+	char c[20];
+	FILE *doc;
+	cin >> n;
+
+	p = (student*)malloc(n * sizeof(student));
+	citire(n,p);
+	cout << "cum vreti sa se numeasca fisierul in care le scriu:";
+	cin >> c;
+	doc = fopen(c, "w");
+	for (i = 0; i < n; i++)
+	{
+		fputs("student:", doc);
+		fprintf(doc, "%d", i+1);
+		fputc('\n', doc);
+		fputs((p + i)->nume, doc);
+		fputc('\n', doc);
+		fputs((p + i)->prenume, doc);
+		fputc('\n', doc);
+		fputs((p + i)->grupa, doc);
+		fputc('\n', doc);
+		fprintf(doc, "%.2f", (p + i)->media);
+		fputc('\n', doc);
+	}
+	fclose(doc);
+	cout << "date adaugate cu succes, apasati o tasta pentru a continua";
+	_getch();
+}
+void citire(int n,student*p)
+{
+	int i;
+	for (i = 0; i < n; i++)
+	{
+		cout << "nume student:";
+		cin >> (p+i)->nume;
+		cout << endl << "prenume student:";
+		cin >> (p+i)->prenume;
+		cout << endl << "grupa:";
+		cin >> (p+i)->grupa;
+		cout << endl << "media:";
+		cin >> (p+i)->media;
+	}
+}
+
+3)
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <stdio.h>
+#include <conio.h>
+#include <cstring>
+#include <fstream>
+#include <stdlib.h>
+using namespace std;
+void citire(int n, int*p);
+void main()
+{
+	FILE *doc;
+	int n, i, x;
+	int *p;
+	char c[20];
+	cin >> n;
+	p = (int*)malloc(n * sizeof(int));
+	citire(n, p);
+	cout << endl << "cum vreti sa se numeasca fisierul:";
+	cin >> c;
+	doc = fopen(c, "wb");
+	fwrite(p, sizeof(int), n, doc);
+	fclose(doc);
+	doc = fopen(c, "rb");
+	for (i = 0; i < n; i++)
+	{
+		fread(&x, sizeof(int), 1, doc);
+		if ((x % 2 == 0)) cout <<endl<< "elementul:" << x << " este par si se afla pe pozitia:" << i;
+	}
+	fclose(doc);
+	_getch();
+}
+void citire(int n, int *p)
+{
+	int i;
+	cout << endl << "dati elementele:";
+	for (i = 0; i < n; i++) cin >> p[i];
+}	
+
+4)
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <stdio.h>
+#include <conio.h>
+#include <cstring>
+#include <fstream>
+#include <stdlib.h>
+using namespace std;
+struct prajitura
+{
+	char nume[20];
+	int pret;
+	int nr_bucati;
+};
+prajitura *p;
+void main()
+{
+	int i, n, min = INT_MAX;
+	char nume1[20];
+	int buc;
+	FILE *doc;
+	cin >> n;
+	p = (prajitura*)malloc(n * sizeof(prajitura));
+	for (i = 0; i < n; i++)
+	{
+		cout << "nume prajitura:";
+		cin >> (p + i)->nume;
+		cout << endl << "nr bucati:";
+		cin >> (p + i)->nr_bucati;
+		cout << endl << "pret(lei):";
+		cin >> (p + i)->pret;
+		if ((p + i)->pret < min)
+		{
+			min = (p + i)->pret;
+			strcpy(nume1, (p + i)->nume);
+			buc = (p + i)->nr_bucati;
+		}
+	}
+	doc = fopen("fis5.txt", "wb");
+	for (i = 0; i < n; i++)
+	{
+		fwrite(p + i, sizeof(prajitura), 1, doc);
+		fwrite("\n", sizeof(char), 1, doc);
+	}
+	fwrite(nume1, strlen(nume1)*sizeof(char), 1, doc);
+	fwrite("\n", sizeof(char), 1, doc);
+	fwrite(&buc, sizeof(int), 1, doc);
+	fwrite("\n", sizeof(char), 1, doc);
+	fwrite(&min, sizeof(int), 1, doc);
+	fwrite("\n", sizeof(char), 1, doc);
+	fclose(doc);
+	doc = fopen("fis5.txt", "rb");
+	for (i = 0; i < n; i++)
+	{
+		fread((p + i)->nume, sizeof((p + i)->nume), 1, doc);
+		fread(&(p + i)->nr_bucati, sizeof(p + i)->nr_bucati, 1, doc);
+		fread(&(p + i)->pret, sizeof((p + i)->nume), 1, doc);
+	}
+
+	fread(nume1, strlen(nume1) * sizeof(char), 1, doc);
+	fread(&buc, sizeof(int), 1, doc);
+	fread(&min, sizeof(int), 1, doc);
+
+	cout << "prajitura cea mai ieftina este:"<<nume1;
+
+	cout << "\ncu un nr de bucati de:"<<buc;
+	
+	cout << "\nla pretul de:"<<min;
+	fclose(doc);
+	_getch();
+	free(p);
+}

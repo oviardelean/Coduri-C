@@ -1,0 +1,374 @@
+1)
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <conio.h>
+#include <stdio.h>
+using namespace std;
+struct student
+{
+	char nume[20];
+	char prenume[20];
+	char tara[20];
+	int an, grupa;
+	student* link;
+};
+void main()
+{
+	int k = 0;
+	student* A = NULL;
+	student* temp = new student();
+	cout << "\ndati numele si prenumele studentului: ";
+	cin >> temp->nume;
+	if (temp->nume == "A", "A", "A") { k = 1; exit(1); }
+	cin>> temp->prenume;
+	cout << "\ncare este tara de origine? ";
+	cin >> temp->tara;
+	cout << "\nin ce an s-a nascut? ";
+	cin >> temp->an;
+	cout << "\nin ce grupa se afla el? ";
+	cin >> temp->grupa;
+	cout << endl << temp->nume << " " << temp->prenume << " " << " din " << temp->tara << " nascut in " << temp->an << " se afla in grupa: " << temp->grupa;
+	temp->link = NULL;
+	A = temp;
+	while (k == 0)
+	{
+		cout << endl << "dati urmatorul student: " << endl;
+
+		temp = new student();
+		cout << "\ndati numele si prenumele studentului: ";
+		cin >> temp->nume;
+		if (temp->nume == "A","A","A") { k = 1; exit(1); }
+		cin>> temp->prenume;
+		cout << "\ncare este tara de origine? ";
+		cin >> temp->tara;
+		cout << "\nin ce an s-a nascut? ";
+		cin >> temp->an;
+		cout << "\nin ce grupa se afla el? ";
+		cin >> temp->grupa;
+		cout << endl << temp->nume << " " << temp->prenume << " " << " din " << temp->tara << " nascut in " << temp->an << " se afla in grupa: " << temp->grupa;
+		temp->link = NULL;
+
+		student* temp1 = A;
+
+		while (temp1->link != NULL)
+		{
+			temp1 = temp1->link;
+		}
+		temp1->link = temp;
+	}
+	_getch();
+}
+//tentativa de linked list....
+
+1)
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <conio.h>
+#include <stdio.h>
+using namespace std;
+struct student
+{
+	char nume[20];
+	char prenume[20];
+	char tara[20];
+	int an, grupa;
+};
+student a[20];
+void main()
+{
+	int i = -1; int k,nr;
+	int v[3] = { 0,0,0 };
+	cout << "introduceti datele: ";
+	do
+	{
+		i++;
+		cout << endl << "nume student: ";
+		cin >> a[i].nume; 
+		nr = 0;
+		for (k = 0; k < 3; k++)
+		{
+			if (a[i].nume[k] == 'A') nr++;
+		}
+		if (nr == 3) break;
+		cin>> a[i].prenume;
+		cout << endl << "tara de provenienta: ";
+		cin >> a[i].tara;
+		cout << endl << "anul nasterii: ";
+		cin >> a[i].an;
+		cout << endl<<"grupa din care face parte(1/2/3): ";
+		cin >> a[i].grupa;
+	} while (a[i].nume != "AAA");
+	int n = i;
+	for (i = 0; i < n; i++)
+	{
+		v[a[i].grupa - 1] = v[a[i].grupa - 1] + 1;
+	}
+	int max = 0;
+	for (i = 0; i < 3; i++)
+	{
+		if (v[i] > max) max = v[i];
+	}
+	cout << "cea mai populata grupa este grupa nr " << max << " formata din studentii: "<<endl;
+	cout << "NUME		" << "TARA		" << "ANUL NASTERI";
+	for (i = 0; i < n; i++);
+	{
+		cout << a[i].nume << " " << a[i].prenume << "		" << a[i].tara << "		" << a[i].an;
+		cout<<endl;
+	}
+	_getch();
+}
+
+4)
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <conio.h>
+#include <stdio.h>
+#include <string.h>
+using namespace std;
+struct angajat
+{
+	char nume[20];
+	char prenume[20];
+	char sectia[20];
+	char dataNast[20];
+	char ocupatie[20];
+};
+angajat a[20];
+void main()
+{
+	int i, n;
+	cout << "cate persoane sunt angajate: ";
+	cin >> n;
+	if (n > 20) { cout << "prea multi..."; exit(1); }
+	else cout << "introduceti datele:" << endl;
+	for (i = 0; i < n; i++)
+	{
+		cout << "\nnume,prenume: ";
+		cin >> a[i].nume>>a[i].prenume;
+		cout << "\nsectia la care lucreaza: ";
+		cin >> a[i].sectia;
+		cout << "\ndata nasterii:";
+		cin >> a[i].dataNast;
+		cout << "\nocupatie:";
+		cin >> a[i].ocupatie;
+		cout << endl;
+	}
+	cout << endl << "inginerii sunt:" << endl;
+	for (i = 0; i < n; i++)
+	{
+		if (strcmp(a[i].ocupatie,"inginer" )==0)
+		{
+			cout << a[i].nume << " " << a[i].prenume << " nascut in " << a[i].dataNast << " lucreaza in sectia de " << a[i].sectia << " si are ocupatia de inginer.";
+		}
+	}
+	_getch();
+}
+
+6)
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <conio.h>
+#include <stdio.h>
+#include <string.h>
+using namespace std;
+struct student
+{
+	char nume[20];
+	char prenume[20];
+	float media;
+};
+void inreg(int n, student* p);
+void main()
+{	
+	int n,i;
+	cout << "cati studenti aveti? ";
+	cin >> n;
+	for (i = 0; i < n; i++)
+	{
+		student* p = new student();
+		cout << endl << "nume,prenume:";
+		cin >> p->nume >> p->prenume;
+		cout << "media:";
+		cin >> p -> media;	
+	}
+	cout << "studentul cu media cea mai mare este:\n";
+	inreg(n, p);
+	_getch();
+}
+void inreg(int n, student* p)
+{
+	student* p1 = new student();
+	int i;
+	for (i = 0; i < n; i++)
+	{
+		if (((*p).media + i) >p1->media )
+		{
+			p1->media = ((*p).media + i);
+			strcpy(p1->nume, ((*p).nume + i));
+			strcpy(p1->prenume, ((*p).prenume + i));
+		}
+	}
+	cout << p1->nume<<" "<<p1->prenume<<" cu media:"<<p1->media;
+}
+
+7)
+//incercare reusita de linked list...
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <conio.h>
+#include <stdio.h>
+#include <string.h>
+using namespace std;
+struct student
+{
+	char nume[20];
+	char prenume[20];
+	char gen;
+	student* link;
+};
+void main()
+{
+	int i, n;
+	student* A=NULL;
+
+	cout << "dati nr de studenti:";
+	cin >> n;
+	for (i = 0; i < n; i++)
+	{
+		student* temp = new student();
+		cout << "nume si prenume student:";
+		cin >> temp->nume >> temp->prenume;
+		cout << "gen (F/M):";
+		cin >> temp->gen;
+		temp->link = NULL;
+		if (i == 0) A = temp;
+		else 
+		{
+			student* temp1 = A;
+			while (temp1->link != NULL) temp1 = temp1->link;
+			temp1->link = temp;
+		}
+	}
+	cout << "fetele sunt:\n";
+	while (A->link != NULL)
+	{
+		if (A->gen == 'F')
+		{
+			cout << A->nume << " " << A->prenume;
+			cout << endl;
+		}
+		A = A->link;
+	}
+	_getch();
+}
+
+9)
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <conio.h>
+#include <stdio.h>
+#include <string.h>
+using namespace std;
+struct produs
+{
+	char denumire[20];
+	char pret[20];
+	int cantitate;
+	produs* link;
+};
+void main()
+{
+	int i, n;
+	produs* A=NULL;
+
+	cout << "cate produse aveti pe stoc:";
+	cin >> n;
+	int max = 0;
+	for (i = 0; i < n; i++)
+	{
+		produs* temp = new produs();
+		cout << "denumire produs:";
+		cin >> temp->denumire;
+		cout << "pret(ex 200lei/euro):";
+		cin >> temp->pret;
+		cout << "cantitate:";
+		cin >> temp->cantitate;
+		if (temp->cantitate > max) max = temp->cantitate;
+		temp->link = NULL;
+		if (i == 0) A = temp;
+		else 
+		{
+			produs* temp1 = A;
+			while (temp1->link != NULL) temp1 = temp1->link;
+			temp1->link = temp;
+		}
+	}
+	cout << "produsul care exista cel mai mult pe stoc este:";
+	while (A->link != NULL)
+	{
+		if (A->cantitate == max) cout << A->denumire << " in numar de " << max << " bucati la pretul de:" << A->pret;
+		A = A->link;
+	}
+	_getch();
+}
+
+10)
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <conio.h>
+#include <stdio.h>
+#include <string.h>
+using namespace std;
+struct masina
+{
+	char producator[20];
+	int anFabricatie;
+	int capacCilind;
+	char culoare[20];
+	masina* link;
+};
+void main()
+{
+	int i, n;
+	masina* A=NULL;
+	char x[20] = "rosie";
+	cout << "cate masini aveti pe stoc:";
+	cin >> n;
+	int max = 0;
+	for (i = 0; i < n; i++)
+	{
+		masina* temp = new masina();
+		cout << "producator:";
+		cin >> temp->producator;
+		cout << "anul fabricatiei:";
+		cin >> temp->anFabricatie;
+		cout << "capacitate cilindrica:";
+		cin >> temp->capacCilind;
+		cout << "culoare:";
+		cin>>temp->culoare;
+		temp->link = NULL;
+		if (i == 0) A = temp;
+		else 
+		{
+			masina* temp1 = A;
+			while (temp1->link != NULL) temp1 = temp1->link;
+			temp1->link = temp;
+		}
+	}
+	cout << "masinile de culoare rosie fabricate dupa 2010 sunt:";
+	while (A->link != NULL)
+	{
+		
+		if ((strcmp(A->culoare, x) == 0) && (A->anFabricatie > 2010))
+		{
+			cout << endl<<A->producator << "\ncapacitate cilindrica:" << A->capacCilind << "\nan fabricatie:" << A->anFabricatie;
+		}
+		A = A->link;
+		if ((A->link == NULL) && (strcmp(A->culoare, x) == 0) && (A->anFabricatie > 2010))
+		{
+			cout << endl << A->producator << "\ncapacitate cilindrica:" << A->capacCilind << "\nan fabricatie:" << A->anFabricatie;
+		}
+	}
+	_getch();
+}
+

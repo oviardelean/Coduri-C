@@ -1,0 +1,346 @@
+1)
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <conio.h>
+#include <math.h>
+using namespace std;
+void main()
+{
+	int a, b, c,aria;
+	cin >> a >> b>>c;
+	aria = a*b;
+	cout << aria << "\n";
+	if (c == a*a + b*b) cout << "da c este egala cu diagonala";
+	_getch();
+}
+
+
+2)
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <conio.h>
+#include <math.h>
+using namespace std;
+void main()
+{
+	int a;
+	cin >> a;
+	if (sqrt(a) == (int)(sqrt(a)))
+		cout << a << " este patrat perfect ";
+	else
+		cout << a << " nu este patrat perfect ";
+	_getch();
+}
+
+3)
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <conio.h>
+#include <math.h>
+using namespace std;
+#define a 2
+void main()
+{
+	int n,i,s;
+	s = 1;
+	cin >> n;
+	for (i = 1; i <= n; i++) s = s*a;
+	cout << s;
+	_getch();
+}
+
+4)
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <conio.h>
+#include <math.h>
+using namespace std;
+void main()
+{
+	int n, i, s;
+	s = 1;
+	cin >> n;
+	if (n == 0) cout << "n factorial este 1";
+	else
+	{
+		for (i = 1; i <= n; i++) s = s*i;
+		cout << s;
+	}
+	_getch();
+}
+
+5)
+a)
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <conio.h>
+#include <math.h>
+using namespace std;
+bool nrprim(int);
+void main()
+{
+	int n, i; bool k = false;
+	cout << "dati nr n=";
+	cin >> n;
+	i = n - 1;
+	if (n == 2) cout << "n este 2, avem o problema";
+	else {
+		while ((k == false) && (i != 1))
+			if (nrprim(i) == true) {
+				cout << "cel mai mic nr prim mai mic decat n dat este=" << i;
+				k = true;
+			}
+			else i--;
+	}
+
+	_getch();
+}
+
+bool nrprim(int a)
+{
+	bool k = true;
+	int d;
+	for (d = 2; d<=a / 2; d++)
+		if (a%d == 0)  k = false;
+	return k;
+}		
+b)
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <conio.h>
+#include <math.h>
+using namespace std;
+bool nrprim(int);
+void main()
+{
+	int n, i; bool k = false;
+	cout << "dati nr n=";
+	cin >> n;
+	for (i = 2; i <= n; i++)
+		if (nrprim(i)==true) cout << i << " ";
+	_getch();
+}
+
+bool nrprim(int a)
+{
+	bool k = true;
+	int d;
+	for (d = 2; d<=a / 2; d++)
+		if (a%d == 0)  k = false;
+	return k;
+}
+
+
+
+6)
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <conio.h>
+#include <math.h>
+using namespace std;
+int cmmdc(int, int);
+void main()
+{
+	int a, b;
+	cin >> a >> b;
+	cout << cmmdc(a, b);
+	_getch();
+}
+int cmmdc(int x,int y)
+{
+	while (x != y)
+		if (x < y) y = y - x;
+		else x = x - y;
+		return x;
+}
+
+
+7)
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <conio.h>
+#include <math.h>
+using namespace std;
+void main()
+{
+	int a, d;
+	cin >> a;
+	for (d = 1; d <= a; d++)
+		if (a%d == 0) cout << d << " ";
+	_getch();
+}
+
+
+8)
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <conio.h>
+#include <math.h>
+using namespace std;
+void main()
+{
+	int a, b,s,i;
+	s = 0;
+	cin >> a >> b;
+	for (i = 1;i <= b; i++)
+		s = s + a;
+	cout << s;
+	_getch();
+}
+
+
+9)
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <conio.h>
+#include <math.h>
+using namespace std;
+void main()
+{
+	int a, b, c;
+	c = 0;
+	cin >> a >> b;
+	while (a > 0)
+	{
+		a=a-b;
+		c++;
+}
+	cout << c;
+	_getch();
+}
+
+
+10)
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <conio.h>
+#include <math.h>
+using namespace std;
+void main()
+{
+	long a;
+	int i=0;
+	cin >> a;
+	while (a>0)
+	{
+		i++;
+		a = a / 10;
+	}
+	cout << i;
+	_getch();
+}
+
+11)
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <conio.h>
+#include <math.h>
+using namespace std;
+void main()
+{
+	int n,x,i;
+	cin >> n;
+	for (i = 1; i <= n;i++)
+	{
+		cin>>x;
+		if (x % 2 != 0) cout << x<<" ";
+	}
+	_getch();
+}
+
+
+12)
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <conio.h>
+#include <math.h>
+using namespace std;
+void main()
+{
+	int n,i=0;
+	float x, s=0;
+	scanf("%d", &n);
+	while (s<=n)
+	{
+		i++;
+		scanf("%f", &x);
+		s = s + x;
+	}
+	printf("suma este=%.2f fiind constituita din %d numere", s, i);
+	
+	_getch();
+}
+
+13)
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <conio.h>
+#include <math.h>
+using namespace std;
+int cmmdc(int, int);
+void main()
+{
+	int a, b;
+	int cmmc;
+	cin >> a >> b;
+	cmmc = a*b / cmmdc(a, b);
+	cout << cmmc;
+	_getch();
+}
+	int cmmdc(int x, int y)
+	{
+		while (x != y)
+			if (x < y) y = y - x;
+			else x = x - y;
+			return x;
+	}
+
+
+14)
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <conio.h>
+#include <math.h>
+using namespace std;
+void main()
+{
+	int n, x, i;
+	cin >> n;
+	for (i = 1; i <= n; i++)
+	{
+		cin >> x;
+		if (x % 3 == 0) cout << x << " ";
+	}
+	_getch();
+}
+
+
+
+15)
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <conio.h>
+#include <math.h>
+using namespace std;
+void main()
+{
+	char x;
+	int n,i,j;
+	cout << "dati numarul n pe urma caracterul x";
+	cin >> n;
+	cin >> x;
+	for (i = 1; i <= n; i++)
+	{
+		for (j = 1; j <= n; j++)
+			cout << x<<" ";
+		cout << "\n";
+	}
+	_getch();
+}
+
+
+
+16)
+
+
+

@@ -1,0 +1,170 @@
+1)
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <conio.h>
+
+void main()
+{
+	float R1, R2;
+	float Rs, Rp;
+	printf("R1=");
+	scanf("%f",&R1);
+	printf("R2=");
+	scanf("%f",&R2);
+	Rs = R1 + R2;
+	Rp = R1*R2 / (R1 + R2);
+	printf("rezistenta echivalenta serie=%.3f",Rs);
+	printf("\nrezistenta echivalenta paralel=%.3f",Rp);
+	_getch();
+
+
+}
+
+2)
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <conio.h>
+
+void main()
+{
+	float C1, C2;
+	float Cs, Cp;
+	printf("C1=");
+	scanf("%f",&C1);
+	printf("C2=");
+	scanf("%f",&C2);
+	Cs = C1*C2 / (C1 + C2);
+	Cp = C1 + C2;
+	printf("capacitate echivalenta serie=%-.4f",Cs);
+	printf("\ncapacitate echivalenta paralel=%-.4f",Cp);
+	_getch();
+
+
+}
+
+3)
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <conio.h>
+#include <math.h>
+using namespace std;
+void main()
+{
+	float ip, p, c1, c2;
+	cout << "cateta1=";
+	cin >> c1;
+	cout << "cateta2=";
+	cin >> c2;
+	ip = sqrt(c1*c1 + c2*c2);
+	p = c1 + c2 + ip;
+	cout << "ipotenuza este="<<ip;
+	cout << "\nperimetrul este="<< p;
+	_getch();
+}
+
+
+4)
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <conio.h>
+#include <math.h>
+using namespace std;
+void main()
+{
+	int a, b;
+	float x;
+	cin >> a >> b;
+	x = (float) -b / a;
+	cout << "solutia este x=" << x;
+	_getch();
+}
+
+
+5)
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <conio.h>
+
+void main()
+{
+	float R1, R2;
+	float Rs, Rp;
+	printf("R1=");
+	scanf("%f", &R1);
+	printf("R2=");
+	scanf("%f", &R2);
+	Rs = R1 + R2;
+	Rp = R1*R2 / (R1 + R2);
+	printf("rezistenta echivalenta serie=%.3f", Rs);
+	printf("\nrezistenta echivalenta paralel=%.3f", Rp);
+
+	float C1, C2;
+	float Cs, Cp;
+	printf("\nC1=");
+	scanf("%f", &C1);
+	printf("C2=");
+	scanf("%f", &C2);
+	Cs = C1*C2 / (C1 + C2);
+	Cp = C1 + C2;
+	printf("capacitate echivalenta serie=%-.4f", Cs);
+	printf("\ncapacitate echivalenta paralel=%-.4f", Cp);
+	_getch();
+}
+
+
+
+
+6)
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <conio.h>
+void main()
+{
+	char s1[30], s2[30];
+	int n1, n2;
+	float med;
+	printf("introduceti datele in felul urmator: nume nota\n");
+	scanf("%s", &s1);
+	scanf("%d", &n1);
+	scanf("%s", &s2);
+	scanf("%d", &n2);
+	med = (float)(n1 + n2) / 2;
+	printf("%*s", 20, s1);
+	printf(" %d", n1);
+	printf("\n%-*s", 20, s2);
+	printf(" %d", n2);
+	printf("\n%.2f", med);
+	_getch();
+}
+
+
+7)
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <conio.h>
+#define PI 3.14
+void main()
+{
+	int r;
+	float l, a;
+	scanf("%d", &r);
+	l = (float)2 * PI*r;
+	a = (float)PI*r*r;
+	printf("%10.3f%10.3f", l, a);
+	_getch();
+}
+
+8)
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <conio.h>
+void main()
+{
+	int h1, h2, m1, m2;
+	scanf("%d%d", &h1, &m1);
+	scanf("%d%d", &h2, &m2);
+	printf("a pornit la:%d:%d", h1, m1);
+	printf("a sosit la:%d:%d", h2, m2);
+	printf("durata calatorie:%d:%d", h2 - h1, m2 - m1);
+	_getch();
+}

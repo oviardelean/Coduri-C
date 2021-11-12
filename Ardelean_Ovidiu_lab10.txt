@@ -1,0 +1,683 @@
+1)
+a)
+#define  _CRT_SECURE__NO_WARNINGS
+#include  <iostream>
+#include  <conio.h>
+using  namespace  std;
+void  main()
+{
+        int  v[50],i,poz=0,neg=0,n,nr1=0,nr2=0;
+        cout<<"dati  lungimea  vector:";
+        cin>>n;
+        cout<<"dati  elementele  vectorului:  ";
+        for  (i=0;i<=n-1;i++)  cin>>v[i];
+        for  (i=0;i<=n-1;i++)
+        {
+                if  (v[i]>=0)  {poz=poz+v[i];nr1++;}
+                else  {neg=neg+v[i];nr2++;}
+        }
+        cout<<"valoarea  medie  a  nr-elor  pozitive  este="<<poz/nr1;
+        cout<<"\nvaloarea  medie  a  nr-elor  negative  este="<<neg/nr2;
+        _getch();
+}
+b)
+#define  _CRT_SECURE__NO_WARNINGS
+#include  <iostream>
+#include  <conio.h>
+using  namespace  std;
+void  main()
+{
+	int  v[50], i, n, min = INT_MAX;
+	int *p;
+	cout << "dati  lungimea  vector:";
+	cin >> n;
+	cout << "dati  elementele  vectorului:  ";
+	for (i = 0; i <= n - 1; i++)  cin >> v[i];
+	p = v;
+	for (i = 0; i <= n - 1; i++)
+	{
+		if ((*(p+i)<min) && (*(p+i) >= 0))
+		{
+			min = *(p+i);
+		}
+	}
+	cout << "\nCel  mai  mic  element  pozitiv  este:  " << min;
+	_getch();
+}
+c)
+#define  _CRT_SECURE__NO_WARNINGS
+#include  <iostream>
+#include  <conio.h>
+using  namespace  std;
+void  vector(int *p);
+void  main()
+{
+	int  v[10], i;
+	int *p;
+	cout << "dati  elementele  vectorului:  ";
+	for (i = 0; i <= 9; i++)  cin >> v[i];
+	p = v;
+	vector(p);
+	for (i = 0; i <= 9; i++)  cout << v[i] << "  ";
+	_getch();
+}
+void  vector(int *p)
+{
+	int  aux, j, i;
+	for (i = 0; i <= 8; i++)
+	{
+		for (j = i; j <= 9; j++)
+			if (*(p + j) < *(p + i))
+			{
+				aux = *(p+i);
+				*(p+i) = *(p+j);
+				*(p+j) = aux;
+			}
+	}
+}
+d)
+#define CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <conio.h>
+#include <string.h>
+using namespace std;
+void main()
+{
+	char s[30];
+	bool k;
+	char parola[30] = "ceamaitareparola";
+	char *p;
+	int i;
+	cout << "scrie parola aici:";
+	k = false;
+	do
+	{
+		cin >> s;
+		k = true;
+		p = s;
+		for (i = 0; i <= strlen(parola) - 1; i++)
+		{
+			if (*(p + i) != (parola[i])) k = false;
+		}
+		if (k == false) cout << "parola gresita, mai incearca\n";
+	}
+		while (k == false);
+	cout << "\nai introdus parola corecta";
+	_getch();
+}
+e)
+#define CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <conio.h>
+#include <string.h>
+using namespace std;
+void main()
+{
+	char nume[30], prenume[30];
+	char *p;
+	cout << "dati numele: ";
+	cin >> nume;
+	cout << "dati prenumele: ";
+	cin >> prenume;
+	p = nume;
+	*p = *p - 32;
+	p = prenume;
+	*p = *p - 32;
+	cout << nume << " " << prenume;
+	_getch();
+}
+
+f)
+
+g)
+
+h)
+
+
+
+
+2)#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <conio.h>
+#include <stdlib.h>
+#include <string.h>
+bool floatsauint(char x[]);
+void main(int argc, char *argv[])
+{
+	int i, n; 
+	float p = 1, suma = 0;
+	if (argc == 1) {
+		printf("\n\n\tNu ati introdus numerele de adunat !");
+		_getch();
+		exit(1);
+	}
+	else
+	{
+		for (i = 1; i<argc; i++)
+		{
+			if  (floatsauint(argv[i]))	n = atoi(argv[i]);
+			else n = atof(argv[i]);
+			suma += n;
+			p *= n;
+		}
+		printf("\nSuma argumentelor din linia de comanda este : %f\n", suma);
+		printf("\nProdusul argumentelor din linia de comanda este : %f\n", p);
+		_getch();
+	}
+}
+bool floatsauint(char x[])
+{
+	int i;
+	bool k = true;
+	for (i = 0; i <= strlen(x) - 1; i++)
+		if (x[i] == '.') k = false;
+	return k;
+}
+
+3)
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <conio.h>
+#include <string.h>
+using namespace std;
+void main()
+{
+	char s[10];
+	char *p;
+	gets_s(s);
+	p = s;
+	cout << *(p + 1) << " ";
+	cout << *(p + 2) << " ";
+	cout << *(p + 4) << " ";
+	cout << *(p + 6) << " ";
+	_getch();
+}
+
+4)
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <conio.h>
+#include <stdlib.h>
+#include <malloc.h>
+#include <math.h>
+using namespace std;
+int** suma(int**p1, int**p2);
+int n, m;
+void main()
+{
+	int i, j;
+	int **p;
+	int **p1, **p2;
+	cout << "dati dimensiunea pentru cele 2 matrici: ";
+	cin >> n >> m;
+	p1 = (int**)malloc(n * sizeof(int*));
+	cout << "dati elementele primei matrici:\n";
+	for (i = 0; i < n; i++)
+	{
+		p1[i] = (int*)malloc(m * sizeof(int));
+		for (j = 0; j < m; j++)
+		{
+			cin >> *(p1[i] + j);
+		}
+	}
+	p2 = (int**)malloc(n * sizeof(int*));
+	cout << "dati elementele celei de a 2-a matrici:\n";
+	for (i = 0; i < n; i++)
+	{
+		p2[i] = (int*)malloc(m * sizeof(int));
+		for (j = 0; j < m; j++)
+		{
+			cin >> *(p2[i] + j);
+		}
+	}
+	p = suma(p1, p2);
+	cout << "\nmatricea suma este:\n";
+	for (i = 0; i<n; i++)
+	{
+		for (j = 0; j < m; j++) cout << *(p[i] + j) << " ";
+		cout << "\n";
+	}
+	_getch();
+}
+int** suma(int**p1, int**p2)
+{
+	int i, j;
+	int **p;
+	p = (int**)malloc(n * sizeof(int*));
+	for (i = 0; i < n; i++)
+	{
+		p[i]= (int*)malloc(m * sizeof(int));
+		for (j = 0; j < m; j++)
+		{
+			*(p[i] + j) = *(p1[i] + j) + *(p2[i] + j);
+		}
+	}
+	return p;
+}
+
+5)
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <conio.h>
+#include <stdlib.h>
+#include <malloc.h>
+#include <math.h>
+using namespace std;
+void main()
+{
+	char **p;
+	int n;
+	int x;
+	p = (char**)malloc(3 * sizeof(char*));
+	p[0] = "valoare prea mica";
+	p[1] = "valoarea prea mare";
+	p[2] = "valoare corecta";
+	n = 1+rand() % 100;
+	cout << n<<endl;
+	cout << "introduceti valoarea: ";
+	do
+	{
+		cin >> x;
+		if (x > n) cout << p[1] << endl;
+		if (x < n) cout << p[0] << endl;
+		if (x == n) cout << p[2] << endl;
+	}
+	while (x != n);
+	_getch();
+}
+
+6)
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <conio.h>
+#include <stdlib.h>
+#include <malloc.h>
+#include <math.h>
+using namespace std;
+void main()
+{
+	char **p;
+	int i;
+	p = (char**)malloc(5 * sizeof(char*));
+	p[0] = "mesaj unu";
+	p[1] = "mesaj doi";
+	p[2] = "mesaj trei";
+	p[3] = "mesaj patru";
+	p[4] = "mesaj cinci";
+	for (i = 0; i < 5; i++) cout << p[i] << endl;
+	_getch();
+}
+
+7)
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <conio.h>
+#include <stdlib.h>
+#include <malloc.h>
+#include <math.h>
+#include <string.h>
+using namespace std;
+void main(int argc, char* argv[])
+{
+	char *p=argv[1];
+	int i;
+	if (argc == 1)
+	{
+		printf("\ntNu ati introdus nimic !");
+		_getch();
+	}
+	else
+	{		
+		for (i = 2; i < argc; i++)
+		{
+			strcat(p, argv[i]);
+		}
+	}
+	puts(p);
+	_getch();
+}
+
+8)
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <conio.h>
+#include <stdlib.h>
+#include <malloc.h>
+#include <math.h>
+#include <string.h>
+using namespace std;
+void main(int argc, char* argv[])
+{
+	int i, k = argc-1;
+	if (argc == 1)
+	{
+		printf("\nNu ati introdus nimic !");
+		_getch();
+		exit(1);
+	}
+	else
+	{	
+		char *p = argv[1];
+		for (i = 1; i <= argc/2; i++)
+		{
+			p = argv[i];
+			argv[i] = argv[k];
+			argv[k] = p;
+			k--;
+		}
+	}
+	for (i = 1; i < argc; i++)
+	{
+		cout<<(argv[i])<<" ";
+	}
+	_getch();
+}
+
+9)
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <conio.h>
+#include <stdlib.h>
+#include <malloc.h>
+#include <math.h>
+#include <string.h>
+using namespace std;
+int media(float*p);
+void main()
+{
+	float s[15];
+	float *p;
+	int i;
+	cout << " dati notele studentilor: ";
+	for (i = 0; i < 15; i++) cin >> s[i];
+	p = s;
+	cout<<"\nnumarul studentilor care au media peste 8 este: "<<media(p);
+	_getch();
+}
+int media(float*p)
+{
+	int nr = 0,i;
+	for (i = 0; i < 15; i++)
+	{
+		if (*(p + i) >= 8) nr++;
+	}
+	return nr;
+}
+
+10)
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <conio.h>
+#include <stdlib.h>
+#include <malloc.h>
+#include <math.h>
+#include <string.h>
+using namespace std;
+int* citire(int n);
+void afisare(float *p,int n);
+float* creare(int*p,int n);
+void main()
+{
+	int n,i;
+	int *a;
+	float *b;
+	cout<<"cate elementele vreti sa aiba vectorul?: ";
+	cin >> n;
+	a=citire(n);
+	b=creare(a,n);
+	afisare(b, n);
+	cout << "\niar vectorul a a fost:\n";
+	for (i = 0; i < n; i++) cout << *(a + i) << " ";
+	_getch();
+}
+int* citire(int n)
+{
+	int i;
+	int*a = (int*)malloc(n * sizeof(int));
+	cout << "dati elementele vectorului:\n";
+	for (i = 0; i < n; i++) cin >> *(a + i);
+	return a;
+}
+float* creare(int*p, int n)
+{
+	float med = 0;
+	float *b = (float*)malloc(n * sizeof(float));
+	int s = 0, nr = 0,i;
+	for (i = 0; i < n; i++)
+	{
+		s = s + *(p + i);
+		nr++;
+	}
+	med = (float) s / nr;
+	for (i = 0; i < n; i++)
+	{
+		*(b + i) = med - *(p + i);
+	}
+	return b;
+}
+void afisare(float *p,int n)
+{
+	int i;
+	cout << "\nnoul vector va fii:\n";
+	for (i = 0; i < n; i++) cout << *(p + i) << " ";
+}
+
+11)
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <conio.h>
+#include <stdlib.h>
+#include <malloc.h>
+#include <math.h>
+using namespace std;
+int fct(int**p,int n);
+void main()
+{
+	int i, j,n;
+	int **p;
+	cout << "dati dimensiunea pentru matrice: ";
+	cin >> n;
+	p = (int**)malloc(n * sizeof(int*));
+	cout << "dati elementele matricii:\n";
+	for (i = 0; i < n; i++)
+	{
+		p[i] = (int*)malloc(n * sizeof(int));
+		for (j = 0; j < n; j++)
+		{
+			cin >> *(p[i] + j);
+		}
+	}
+	cout << "nr de elemente negative deasupra diagonale secundare este: " << fct(p, n);
+	_getch();
+}
+int fct(int**p, int n)
+{
+	int i,j;
+	int nr = 0;
+	for (i=0;i<n;i++)
+		for (j = 0; j < n; j++)
+		{
+			if ((i + j < n + 1) && (*(p[i] + j) < 0)) nr++;
+		}
+	return nr;
+}
+
+
+12)
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <conio.h>
+#include <stdlib.h>
+#include <malloc.h>
+#include <math.h>
+using namespace std;
+void afisare(int**p,int n);
+int** citire(int n);
+int** interschimb(int **p, int l1, int l2,int n);
+void main()
+{
+	int l1, l2,n;
+	int **p;
+	cout << "dati dimensiunea pentru matrice: ";
+	cin >> n;
+	p = citire(n);
+	cout << "dati numarului liniilor ce vreti sa le interschimbati: ";
+	cin >> l1 >> l2;
+	l1--;
+	l2--;
+	interschimb(p, l1, l2, n);
+	cout << "noua matrice va arata in felul urmator:\n";
+	afisare(p, n);
+	_getch();
+}
+void afisare(int**p, int n)
+{
+	int i,j;
+	for (i = 0; i < n; i++)
+	{
+		for (j = 0; j < n; j++) cout << *(p[i] + j) << " ";
+		cout << endl;
+	}
+}
+int** citire(int n)
+{
+	int i, j;
+	int **p;
+	p = (int**)malloc(n * sizeof(int*));
+	cout << "dati elementele matricii:\n";
+	for (i = 0; i < n; i++)
+	{
+		p[i] = (int*)malloc(n * sizeof(int));
+		for (j = 0; j < n; j++)
+		{
+			cin >> *(p[i] + j);
+		}
+	}
+	return p;
+}
+int** interschimb(int **p, int l1, int l2,int n)
+{
+	int i;
+	int aux;
+	for (i = 0; i < n; i++)
+	{
+		aux = *(p[l1] + i);
+		*(p[l1] + i) = *(p[l2] + i);
+		*(p[l2] + i) = aux;
+	}
+	return p;
+}
+
+13)
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <conio.h>
+#include <stdlib.h>
+#include <malloc.h>
+#include <math.h>
+using namespace std;
+void dir_sort(float *p, int n);
+void main()
+{
+	int n,i;
+	float *p;
+	cout << "cate elemente vreti sa aiba vectorul? ";
+	cin >> n;
+	p = (float*)malloc(n * sizeof(float));
+	dir_sort(p, n);
+	for (i = 0; i < n; i++) cout << *(p + i) << " ";
+	_getch();
+}
+void dir_sort(float *p, int n)
+{
+	int i, j;
+	float aux=0;
+	cout << "\ndati elemente vectorului:\n";
+	cin >> *(p + 0);
+	for (i = 1; i < n; i++)
+		{	
+			cin >> *(p + i);
+			if (*(p + i) < *(p + i - 1))
+			{
+				j = i;
+				while (*(p + j) < *(p + j - 1))
+				{
+					aux = *(p + j);
+					*(p + j) = *(p + j - 1);
+					*(p + j - 1) = aux;
+					j--;
+				}
+			}
+		}
+}
+
+14)
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <conio.h>
+#include <stdlib.h>
+#include <malloc.h>
+#include <math.h>
+using namespace std;
+void main()
+{
+	int n1, n2, *p1, *p2, *p3, i, j, k;
+	cout << "dati nr elemente pt primul vector:\n ";
+	cin >> n1;
+	p1 = (int*)malloc(n1 * sizeof(int));
+	cout << "\ndati elementele primului vector:\n ";
+	for (i = 0; i < n1; i++) cin >> *(p1 + i);
+	cout << "\ndati nr elemente pt al 2-lea vector:\n ";
+	cin >> n2;
+	p2 = (int*)malloc(n2 * sizeof(int));
+	cout << "\ndati elementele celui de-al 2-lea vector:\n ";
+	for (i = 0; i < n2; i++) cin >> *(p2 + i);
+
+	i = 0; j = 0; k = -1;
+
+
+	if (n1 >= n2) p3 = (int*)malloc(n1 * sizeof(int));
+	else  p3 = (int*)malloc(n2 * sizeof(int));
+
+	while ((i < n1) && (j < n2))
+	{
+		if (*(p1 + i) < *(p2 + j))
+		{
+			k++;
+			*(p3 + k) = *(p1 + i);
+			i++;
+		}
+		else
+		{
+			k++;
+			*(p3 + k) = *(p1 + i);
+			j++;
+		}
+	}
+	if (i < n1)
+	{
+		while (i <= n1)
+		{
+			k++;
+			*(p3 + k) = *(p1 + i);
+			i++;
+		}
+	}
+	else
+	{
+		while (j < n2)
+		{
+			k++;
+			*(p3 + k) = *(p2 + i);
+			j++;
+		}
+	}
+	
+	cout << endl;
+	for (i = 0; i < k; i++) cout << *(p3 + i) << " ";
+
+}
+
+
+
+

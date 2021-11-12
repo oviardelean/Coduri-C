@@ -1,0 +1,283 @@
+1)
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <conio.h>
+#include <stdio.h>
+#include <string.h>
+using namespace std;
+union grup
+{
+	int i;
+	long l;
+	double d;
+	char c;
+};
+grup x;
+void main()
+{
+	cin >> x.i;
+	cin >> x.l;
+	cin >> x.d;
+	cin >> x.c;
+	cout << x.i << endl;
+	cout << sizeof(grup);
+	// nu se poate afisa decat ultima valoare citita ..got it...
+	_getch();
+}
+
+3)
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <conio.h>
+#include <stdio.h>
+#include <string.h>
+using namespace std;
+
+void main()
+{
+	FILE *doc;
+	char s[] = "fis1.txt";
+	char s1[10];
+	char c;
+	fopen_s(&doc, s, "w");
+	fprintf(doc, "date intrare aleatoare blaqwd fwvwd1234rgefv");
+	fclose(doc);
+	cout << "dati numele fisierului ce vreti sa l deschideti:";
+	cin >> s1;
+	cout << "a-ti deschis fisierul:" << s;
+	cout << " acestia contine:"<<endl;
+	fopen_s(&doc, s, "r");
+	while ((c = getc(doc)) != EOF) cout << c;
+	fclose(doc);
+	_getch();
+}
+
+4)
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <conio.h>
+#include <stdio.h>
+#include <string.h>
+#include <fstream>
+using namespace std;
+void sortare(int *X);
+void main()
+{
+	FILE *doc;
+	int i, a[10], nr = 0,x;
+	char s[] = "fis1.txt";
+	//scriere inceput
+	doc = fopen(s, "w");
+	for (i=0;i<10;i++)	fprintf(doc,"%d\ ",rand()%10);
+	fclose(doc);
+	//scriere sfarsit
+	if (doc == NULL) cout << "eroare";
+	else
+	{
+		i = 0;
+		//citire inceput
+		fopen_s(&doc, s, "r");
+		while (!feof(doc))
+		{
+			fscanf(doc, "%d", &x);
+			if (i % 2 == 0) nr++;
+			a[i] = x;
+			i++;
+		}
+		fclose(doc);
+		//citire sfarsit
+		//afisare elemente din fisier
+		cout << "elementele din fisier sunt:" << endl;
+		for (i = 0; i < 10; i++) cout << a[i] << " ";
+		cout << endl << "elementele pare sunt in nr de:" << nr;
+		int i, j, aux;
+		for (i = 0; i<9; i++)
+			for (j = i; i<10; j++)
+				if (a[i] > a[j])
+				{
+					aux = a[i];
+					a[i] =a[j];
+					a[j] = aux;
+				}
+		cout << "elementele dupa sortare:" << endl;
+		for (i = 0; i < 10; i++) cout << a[i] << " ";
+		_getch();
+	}
+}
+//void sortare(int *X)
+//{
+//	int i, j,aux;
+//	for (i=0;i<9;i++)
+//		for(j=i;i<10;j++)
+//			if (*(X+i) > *(X+j))
+//			{
+//				aux = *(X+i);
+//				*(X+i) = *(X+j);
+//				*(X+j) = aux;
+//			}
+//	cout << "elementele dupa sortare:" << endl;
+//	for (i = 0; i < 10; i++) cout << *(X + i) << " ";
+//}
+//	imi zice ca datele de pe a sunt corrupte ???
+
+
+5)
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <conio.h>
+#include <stdio.h>
+#include <string.h>
+using namespace std;
+void main()
+{
+	FILE *doc;
+	int n, x, i, suma = 0;
+	float med = 0;
+	char s[20];
+	cout << "cate nr vreti sa cititi:";
+	cin >> n;
+	cout << endl << "cum vreti sa se numeasca fisierul in care le scriu:";
+	cin>>s;
+	doc = fopen(s, "a");
+	if (doc==NULL) cout << "eroare";
+	else
+	{
+		cout << endl << "dati numerele acum:";
+		for (i = 0; i < n; i++)
+		{
+			cin >> x;
+			suma = suma + x;
+			fprintf(doc, "%d\ ", x);
+		}
+		med = suma / n;
+		fprintf(doc, "%.3f", med);
+		fclose(doc);
+	}
+}
+
+6)
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <conio.h>
+#include <stdio.h>
+#include <string.h>
+using namespace std;
+void main()
+{
+	FILE *doc;
+	char c;
+	int n,i,j;
+	cout << "dati caracterul:";
+	cin >> c;
+	cout << endl << "dati nr n:";
+	cin >> n;
+	doc = fopen("fisier1.txt", "a");
+	if (doc == NULL) cout << "eroare";
+	else
+	{
+		i = 0;
+		while (i < n)
+		{
+			j = 0;
+			while (j < n)
+			{
+				fprintf(doc, "%c", c);
+				j++;
+			}
+			fprintf(doc, "\n");
+			i++;
+		}
+		fclose(doc);
+	}
+	_getch(); //nu stiu de ce nu a mers cu for ..era sa mi umplu memoria 
+}
+
+7)
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <conio.h>
+#include <stdio.h>
+#include <string.h>
+using namespace std;
+void main()
+{
+	FILE *doc;
+	char s[300];
+	int n, i, j;
+	doc = fopen("fisier1.txt", "r");
+	if (doc == NULL) cout << "eroare";
+	else
+	{
+		do
+		{
+			fgets(s, 300, doc);
+			puts(s);
+		} while (!feof(doc));
+	}
+	_getch();
+}
+
+
+9)
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <conio.h>
+#include <stdio.h>
+#include <string.h>
+using namespace std;
+void main()
+{
+	FILE *doc;
+	char c;
+	char s1[] = "ana are mere";
+	char s2[] = "maria are pere";
+	char s3[] = "ultima propozitie";
+	char s[20];
+	int i = 0;
+	doc = fopen("fisier.txt", "w");
+	fprintf(doc, "%s\n%s\n%s", s1, s1, s3); //stack around variable s3 corrupted???
+	fclose(doc);
+	doc = fopen("fisier.txt", "r");
+	if (doc == NULL) cout << " error";
+	else
+	{
+		while (!feof(doc))
+		{
+			c = fgetc(doc);
+			s[i] = c;
+			i++;
+		}
+		puts(s);
+		fclose(doc);
+		_getch();
+	} 
+}
+
+10)
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <conio.h>
+#include <stdio.h>
+#include <string.h>
+using namespace std;
+void main()
+{
+	FILE *doc1;
+	FILE *doc2;
+	float x;
+	doc1 = fopen("fisier.txt", "r");
+	doc2 = fopen("fisier1.txt", "w");
+	if ((doc1 == NULL) && (doc2 == NULL)) cout << "eroare";
+	else
+	{
+
+		while (fscanf(doc1, "%f", &x) != EOF)
+		{
+			fprintf(doc2, "%d\ ", (int)x);
+		}
+		fclose(doc1);
+		fclose(doc2);
+	}
+}
+	
+

@@ -1,0 +1,146 @@
+
+
+public  class  Student  {
+        private  String  nume;
+        private  float  media;
+        private  String  Tel;
+
+        public  void  setNume(String  nume)  {
+                this.nume  =  nume;
+        }
+
+        public  void  setMedia(float  media)  {
+                this.media  =  media;
+        }
+
+        public  void  setTel(String  Tel)  {
+                this.Tel  =  Tel;
+        }
+
+        public  String  getNume()  {
+                return  nume;
+        }
+
+        public  float  getMedia()  {
+                return  media;
+        }
+
+        public  String  getTel()  {
+                return  Tel;
+        }
+
+        
+}
+import  java.util.Scanner;
+
+public  class  ex06  {
+
+        public  static  boolean  checkTel(String  Tel,  int  i)  {
+                boolean  k  =  false;
+                String  str  =  ("0123456789-.  ");
+                while  (k  ==  false)  {
+                        if  ((Tel.length()  <  10)  ||  (Tel.length()  >  13))  {
+                                break;
+                        }  else  {
+                                for  (int  j  =  0;  j  <  str.length();  j++)  {
+                                        if  (str.charAt(j)  ==  Tel.charAt(i))  {
+                                                k  =  true;
+                                        }
+                                }
+                        }
+                }
+                return  k;
+        }
+
+        public  static  void  ShowList(Student[]  ob,  int  n)  {
+                for  (int  i  =  0;  i  <  n;  i++)  {
+                        System.out.println(ob[i].getNume()  +  "    "  +  ob[i].getMedia()  +  "    "  +  ob[i].getTel());
+                }
+        }
+
+        public  static  Student[]  sortareMed(Student[]  ob,  int  n)  {
+                Student[]  object  =  new  Student[n];
+
+                for  (int  i  =  0;  i  <  n;  i++)  {
+                        object[i]  =  new  Student();
+                        object[i]  =  ob[i];
+                }
+
+                Student  aux  =  new  Student();
+
+                for  (int  i  =  0;  i  <  n  -  1;  i++)  {
+                        for  (int  j  =  i;  j  <  n;  j++)  {
+                                if  (object[i].getMedia()  <  object[j].getMedia())  {
+                                        aux  =  object[i];
+                                        object[i]  =  object[j];
+                                        object[j]  =  aux;
+                                }
+                        }
+                }
+                return  object;
+        }
+        
+        
+        public  static  Student[]  sortareNume(Student[]  ob,int  n)  {
+                Student[]  object  =  new  Student[n];
+
+                for  (int  i  =  0;  i  <  n;  i++)  {
+                        object[i]  =  new  Student();
+                        object[i]  =  ob[i];
+                }
+
+                Student  aux  =  new  Student();
+
+                for  (int  i  =  0;  i  <  n  -  1;  i++)  {
+                        for  (int  j  =  i;  j  <  n;  j++)  {
+                                if  ((object[i].getNume()).compareTo(object[j].getNume())>0)  {
+                                        aux  =  object[i];
+                                        object[i]  =  object[j];
+                                        object[j]  =  aux;
+                                }
+                        }
+                }
+                return  object;
+        }
+                
+                
+
+        public  static  void  main(String[]  args)  {
+                Scanner  input  =  new  Scanner(System.in);
+                System.out.println("Dati  dimensiunea:");
+                int  n  =  input.nextInt();
+                String  nume;
+                String  Tel;
+                float  media;
+
+                Student[]  obj  =  new  Student[n];
+                for  (int  i  =  0;  i  <  n;  i++)  {
+                        obj[i]  =  new  Student();
+                        System.out.println("Nume  student  "  +  (i  +  1)  +  ":  ");
+                        nume  =  input.next();
+                        obj[i].setNume(nume);
+
+                        System.out.println("Telefon  student  "  +  (i  +  1)  +  ":  ");
+                        Tel  =  input.next();
+                        int  j  =  0;
+                        while  (checkTel(Tel,  j)  ==  false)  {
+                                j++;
+                                System.out.println("Numar  de  telefon  gresit!  Reintroduceti:  ");
+                                Tel  =  input.next();
+                        }
+                        if  ((checkTel(Tel,  i)  ==  true))
+                                obj[i].setTel(Tel);
+
+                        System.out.println("Media  student  "  +  (i  +  1)  +  ":  ");
+                        media  =  input.nextFloat();
+                        obj[i].setMedia(media);
+                }
+                ShowList(obj,  n);
+                obj=sortareMed(obj,n);
+                System.out.println("Sortare  dupa  medie:");
+                ShowList(obj,  n);
+                System.out.println("Sortare  dupa  nume:");
+                obj=sortareNume(obj,n);
+                ShowList(obj,  n);
+        }
+}

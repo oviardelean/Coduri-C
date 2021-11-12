@@ -1,0 +1,131 @@
+7)
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <conio.h>
+void main()
+{
+	float a, b, c;
+	float med;
+	scanf("%f", &a);
+	scanf("%f", &b);
+	scanf("%f", &c);
+	med = 1/a+1/b+1/c;
+	printf("%.2f", med);
+	_getch();
+}
+
+
+
+6)
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <conio.h>
+using namespace std;
+void main()
+{
+	int n;
+	char s[30];
+	float nr;
+	cout << "dati numarul n=";
+	cin >> n;
+	cout << "dati sirul s=";
+	cin >> s;
+	cout << "dati numaru real nr=";
+	cin >> nr;
+	cout << "a-ti dat valorile urmatoare:" << n << s << nr;
+	_getch();
+}
+
+
+
+5)
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <conio.h>
+#define p1 0.35
+#define p2 0.35
+#define p3 0.30
+void main()
+{
+	int a, b, c;
+	float med;
+	scanf("%d", &a);
+	scanf("%d", &b);
+	scanf("%d", &c);
+	med = a*p1 + b*p2 + c*p3;
+	printf("media ponderata e=%.2f", med);
+	_getch();
+}
+
+
+
+4)
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <conio.h>
+using namespace std;
+#define s "program wannabe"
+void main()
+{
+	cout << s;
+	_getch();
+}
+
+
+
+
+3)
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <conio.h>
+using namespace std;
+void main()
+{
+	int a;
+	cout << "dati numarul a=";
+	cin >> a;
+	cout << a;
+	_getch();
+}
+
+
+
+
+
+
+2)
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <conio.h>
+#include <math.h>
+void main()
+{
+	int a, b;
+	float med;
+	scanf("%d", &a);
+	scanf("%d", &b);
+	med = sqrt(a*b);
+	printf("%.2f", med);
+	_getch();
+}
+
+
+
+
+
+
+1)
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <conio.h>
+void main()
+{
+	float a, b, c, m;
+	scanf("%f", &a);
+	scanf("%f", &b);
+	scanf("%f", &c);
+	m =(a + b + c) / 3;
+	printf("media aritmetica este=");
+	printf("%f", m);
+	_getch();
+}
